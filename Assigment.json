@@ -1,0 +1,45 @@
+[
+  {
+    "PatientID": "P-2001",
+    "Name": "Hassan Ahmed",
+    "Age": 29,
+    "Gender": "Male",
+    "BloodGroup": "B+",
+    "NIC": "42101-9876543-1",
+    "PhoneNo": ["03211234567", "03152345678"],
+    "Address": {
+      "Street": "House 45, Block C",
+      "City": "Karachi",
+      "PostalCode": "75400"
+    },
+    "MedicalHistory": ["Asthma", "Seasonal Allergies"],
+    "CurrentMedication": ["Ventolin Inhaler"],
+    "EmergencyContact": {
+      "Name": "Adeel Ahmed",
+      "Relation": "Brother",
+      "PhoneNo": "03001234567"
+    }
+  },
+
+  {
+    "PatientID": "P-2002",
+    "Name": "Sara Khan",
+    "Age": 24,
+    "Gender": "Female",
+    "BloodGroup": "O+",
+    "NIC": "42101-1234567-8",
+    "PhoneNo": ["03451239876"],
+    "Address": {
+      "Street": "Flat 8B, Gulshan View",
+      "City": "Karachi",
+      "PostalCode": "75300"
+    },
+    "MedicalHistory": ["Migraine"],
+    "CurrentMedication": ["Panadol Extra"],
+    "EmergencyContact": {
+      "Name": "Amna Khan",
+      "Relation": "Mother",
+      "PhoneNo": "03219876543"
+    }
+  }
+]
