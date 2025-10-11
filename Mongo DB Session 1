@@ -1,0 +1,101 @@
+[
+  {
+    "RollNo": 1001,
+    "Name": "Areeba",
+    "NIC": "42101-2665642-3",
+    "PatientCode": "P-1001"
+  },
+
+  {
+    "RollNo": 1002,
+    "Name": "Hamza",
+    "NIC": "42101-2665642-5",
+    "Qualification": "MSC",
+    "PatientCode": "P-1002"
+  },
+
+  {
+    "RollNo": 1003,
+    "Name": "Zunaira",
+    "NIC": "42101-2665642-6",
+    "Qualification": "BSC",
+    "PhoneNo": ["0321412123121", "23232323232", "232323232323"],
+    "PatientCode": "P-1003"
+  },
+
+  {
+    "RollNo": 1004,
+    "Name": "Bilal",
+    "NIC": "42101-2665642-6",
+    "Qualification": "FSC",
+    "PhoneNo": ["0321412123121", "23232323232", "232323232323"],
+    "Courses": [
+      {
+        "Institute": "MCAT",
+        "year": 2008,
+        "grade": "A-1"
+      },
+      {
+        "Institute": "Aptech",
+        "year": 2009,
+        "grade": "A"
+      },
+      {
+        "Institute": "SBTE",
+        "year": 2009,
+        "grade": "B"
+      }
+    ],
+    "PatientCode": "P-1004"
+  }
+]
+[
+  {
+    "RollNo": 1001,
+    "Name": "Areeba",
+    "NIC": "42101-2665642-3",
+    "PatientCode": "P-1001"
+  },
+
+  {
+    "RollNo": 1002,
+    "Name": "Hamza",
+    "NIC": "42101-2665642-5",
+    "Qualification": "MSC",
+    "PatientCode": "P-1002"
+  },
+
+  {
+    "RollNo": 1003,
+    "Name": "Zunaira",
+    "NIC": "42101-2665642-6",
+    "Qualification": "BSC",
+    "PhoneNo": ["0321412123121", "23232323232", "232323232323"],
+    "PatientCode": "P-1003"
+  },
+
+  {
+    "RollNo": 1004,
+    "Name": "Bilal",
+    "NIC": "42101-2665642-6",
+    "Qualification": "FSC",
+    "PhoneNo": ["0321412123121", "23232323232", "232323232323"],
+    "Courses": [
+      {
+        "Institute": "MCAT",
+        "year": 2008,
+        "grade": "A-1"
+      },
+      {
+        "Institute": "Aptech",
+        "year": 2009,
+        "grade": "A"
+      },
+      {
+        "Institute": "SBTE",
+        "year": 2009,
+        "grade": "B"
+      }
+    ],
+  }
+]
