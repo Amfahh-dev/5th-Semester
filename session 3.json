@@ -1,0 +1,21 @@
+db.createView(
+   "countryView",
+   "country",
+   [{$project: {_id:0, Name:1, Continent:1, Population:1}}]
+
+   db.createView(
+    "productView",
+    "products",
+    [{$project: {_id:0, productName:1, productLine:1, buyPrice:1}}]
+)
+
+)
+
+db.countryView.find(
+{
+  $and[
+   { Population:{$lt:10000}}
+   {Continent:"Africa"},
+  ]
+}
+)
