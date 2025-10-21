@@ -1,0 +1,23 @@
+
+db.country.find().sort({ name: 1 }).limit(10)
+
+db.products.find({ price: { $lt: 50 } })
+
+db.categories.find({ name: { $regex": "^a", "$options": "i" } })
+
+Or 
+
+// 1️⃣
+Filter: {}
+Sort: { "name": 1 }
+Limit: 10
+
+// 2️⃣
+{ "price": { "$lt": 50 } }
+
+// 3️⃣
+{ "name": { "$regex": "^a", "$options": "i" } }
+
+
+
+
