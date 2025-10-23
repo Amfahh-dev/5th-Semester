@@ -1,0 +1,19 @@
+
+function getCity(code) {
+  return db.city.find({ CountryCode: code });
+}
+
+
+getCity("PAK");
+getCity("AFG");
+getCity("IND");
+
+
+function getProduct(line) {
+  return db.products.find({ productLine: line });
+}
+
+
+getProduct("Motorcycles");
+getProduct("Classic Cars");
+getProduct("Trucks and Buses");
