@@ -1,0 +1,36 @@
+////////////////////session 5//////////////////////////////////////////////////
+getProduct = function (code, page) {
+  pageSize = 10;
+ sk = (page - 1) * pageSize;
+
+  return db.products
+    .find({ productLine: code })
+    .skip(sk)
+    .limit(10)
+    .sort({ productName: 1 })
+};       
+
+getProduct("Motorcycles", 1)
+
+
+getProduct = function (name, page) {
+  pageSize = 10;                    
+  sk = (page-1) * pageSize; 
+
+  return db.products
+    .find({
+      productLine: {$regex: new RegExp(name, 'i') }
+    })
+    .skip(sk)
+    .limit(10)
+    .sort(
+    { productName: 1 }
+    )           
+};
+
+getProduct("cars", 1);
+getProduct("classics", 1);
+
+
+
+
