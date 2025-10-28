@@ -1,0 +1,48 @@
+
+function addProduct(name, cat, scale, vendor, desc, stock, price) {
+    var noofrecords = db.products.find().count();
+    var maxid = noofrecords + 1;
+
+    var document = {
+        productName: name,
+        productLine: cat,
+        productScale: scale,
+        productVendor: vendor,
+        productDescription: desc,
+        quantityInStock: stock,
+        buyPrice: price,
+        MSRP: "214.3",
+        Image: "data/2.jpg",
+        productID: maxid
+    };
+
+    db.products.insertOne(document);
+    print("Your record has been inserted with id = " + maxid)
+}
+
+addProduct("abc", "car", "23:34", "xyz", "abc", 12, 23)
+db.products.find({ productID: 241 })
+
+function addCustomer(name, contactLastName, contactFirstName, phone, addressLine, city, country, postalCode, creditLimit) {
+    var noofrecords = db.customers.find().count();
+    var maxid = noofrecords + 1;
+
+    var document = {
+        customerNumber: maxid,
+        customerName: name,
+        contactLastName: contactLastName,
+        contactFirstName: contactFirstName,
+        phone: phone,
+        addressLine: addressLine,
+        city: city,
+        country: country,
+        postalCode: postalCode,
+        creditLimit: creditLimit,
+     
+    }
+
+    db.customers.insertOne(document);
+    print("New customer added with ID = " + maxid)
+}
+
+addCustomer("Amfahh Jawad", "Jawad", "Amfahh", "03001234567", "pechs block 6", "karachi", "pakistan", "75000", 50000)
