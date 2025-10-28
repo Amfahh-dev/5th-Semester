@@ -46,3 +46,48 @@ function addCustomer(name, contactLastName, contactFirstName, phone, addressLine
 }
 
 addCustomer("Amfahh Jawad", "Jawad", "Amfahh", "03001234567", "pechs block 6", "karachi", "pakistan", "75000", 50000)
+
+deleteProduct=function(ic)
+{
+    var noofrecord=db.products.find({productID:ic}).count()
+
+    if (noofrecord>0)
+    {
+        db.products.deleteOne({productID:ic})
+        
+        print("Your record has been deleted")
+    }
+    else
+    {
+        print("Record not found")
+    }
+}
+
+deleteProduct(241)
+db.products.find({productID:241})
+var updateProduct = function(name, cat, scale, vendor, desc, stock, price, id) {
+    var noofrecord = db.products.find({ productID: id }).count();
+
+    if (noofrecord > 0) {
+        var document = {
+            productName: name,
+            productLine: cat,
+            productScale: scale,
+            productVendor: vendor,
+            productDescription: desc,
+            quantityInStock: stock,
+            buyPrice: price,
+            MSRP: "214.3",
+            image: "data/2.jpg"
+        };
+
+        db.products.updateOne(
+            { productID: id },
+            { $set: document },
+            { upsert: true, multi: true }
+        );
+
+        print("Your record has been updated");
+    }
+};
+
