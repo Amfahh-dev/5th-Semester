@@ -1,0 +1,41 @@
+deleteProduct=function(id)
+{  
+
+  var noofrecord=db.products.find({productID:id}).count()
+
+  if (noofrecord>0)
+  {
+    db.products.deleteOne({productID:id})
+
+    print("Your record has been deleted")
+  }
+  else
+  {
+    print("Record not found")
+  }
+
+}
+
+deleteProduct(241)
+db.products.find({productID:241})
+
+cursorProduct = function (id) {
+    var product = db.products.find({ productID: id }).toArray();
+
+    var document = {
+        productName: product[0].productName,
+        productLine: product[0].productLine,
+        productScale: product[0].productScale,
+        productVendor: product[0].productVendor,
+        productDescription: product[0].productDescription,
+        quantityInStock: product[0].quantityInStock,
+        buyPrice: product[0].buyPrice,
+        productID: product[0].productID
+    };
+
+    db.productBKP.insertOne(document);
+
+    print("Your product has been backed up");
+};
+
+cursorProduct(3);
