@@ -1,0 +1,49 @@
+// Function to back up a product before deletion
+bkpProduct = function (id) {
+    // Fetch product by ID
+    var product = db.products.find({ productID: id }).toArray();
+
+    // Only proceed if product exists
+    if (product.length > 0) {
+        var document = {
+            productName: product[0].productName,
+            productLine: product[0].productLine,
+            productScale: product[0].productScale,
+            productVendor: product[0].productVendor,
+            productDescription: product[0].productDescription,
+            quantityInStock: product[0].quantityInStock,
+            buyPrice: product[0].buyPrice,
+            productID: product[0].productID
+        };
+
+        // Insert into backup collection
+        db.productBKP.insertOne(document);
+        print("Backup created successfully");
+    } else {
+        print("No product found to back up");
+    }
+};
+
+
+// Function to delete a product with backup
+deleteProduct = function (id) {
+    var noofrecord = db.products.find({ productID: id }).count();
+
+    if (noofrecord > 0) {
+        // Step 1: Backup the product
+        bkpProduct(id);
+
+        // Step 2: Delete from main collection
+        db.products.deleteMany({ productID: id });
+
+        print("Your record has been deleted successfully");
+    } else {
+        print("Record not found");
+    }
+};
+
+// Run the function for testing
+deleteProduct(5);
+
+// Check if product still exists
+db.products.find({ productID: 5 });
