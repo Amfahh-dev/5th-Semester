@@ -1,0 +1,99 @@
+// Function to record a product purchase
+purchaseProduct = function (id, qty) {
+  var product = db.products.find({ productID: id }).toArray();
+
+  var document = {
+    productName: product[0].productName,
+    productLine: product[0].productLine,
+    productScale: product[0].productScale,
+    productVendor: product[0].productVendor,
+    productDescription: product[0].productDescription,
+    quantityInStock: product[0].quantityInStock,
+    buyPrice: product[0].buyPrice,
+    productID: product[0].productID,
+    saleQty: qty
+  };
+
+  db.productPurchase.insertOne(document);
+  print("Your purchase record has been inserted");
+};
+
+
+// Function to update product quantity after purchase
+updateProductwithPurchase = function (id, qty) {
+  var noOfRecord = db.products.find({ productID: id }).count();
+
+  if (noOfRecord > 0) {
+    var product = db.products.find({ productID: id }).toArray();
+    var oldQty = product[0].quantityInStock;
+
+    purchaseProduct(id, qty);
+
+    var newQty = oldQty + qty;
+
+    db.products.updateOne(
+      { productID: id },
+      { $set: { quantityInStock: newQty } },
+      { upsert: true, multi: true }
+    );
+
+    print("Your record has been updated with purchase");
+  } else {
+    print("Record not found");
+  }
+};
+
+
+// Function to record a product sale
+saleProduct = function (id, qty) {
+  var product = db.products.find({ productID: id }).toArray();
+
+  var document = {
+    productName: product[0].productName,
+    productLine: product[0].productLine,
+    productScale: product[0].productScale,
+    productVendor: product[0].productVendor,
+    productDescription: product[0].productDescription,
+    quantityInStock: product[0].quantityInStock,
+    buyPrice: product[0].buyPrice,
+    productID: product[0].productID,
+    saleQty: qty
+  };
+
+  db.productSale.insertOne(document);
+  print("Your sale record has been inserted");
+};
+
+
+// Function to update product quantity after sale
+updateProductwithSale = function (id, qty) {
+  var noOfRecord = db.products.find({ productID: id }).count();
+
+  if (noOfRecord > 0) {
+    var product = db.products.find({ productID: id }).toArray();
+    var oldQty = product[0].quantityInStock;
+
+    if (oldQty > qty) {
+      saleProduct(id, qty);
+
+      var newQty = oldQty - qty;
+
+      db.products.updateOne(
+        { productID: id },
+        { $set: { quantityInStock: newQty } },
+        { upsert: true, multi: true }
+      );
+
+      print("Your record has been updated with sale");
+    } else {
+      print("Quantity in stock is less than required qty");
+    }
+  } else {
+    print("Record not found");
+  }
+};
+
+
+// Example function calls
+updateProductwithPurchase(7, 10);
+updateProductwithSale(9, 7);
