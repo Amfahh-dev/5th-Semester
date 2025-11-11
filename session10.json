@@ -1,0 +1,57 @@
+/////////////////
+session10
+//////////////////////
+db.city.aggregate(
+[
+  {
+    $lookup: {
+      from: "country",
+      localField: "CountryCode",
+      foreignField: "Code",
+      as: "countryDetail"
+    }
+  },
+  {
+    $unwind: "$countryDetail"
+  }
+])
+
+db.products.aggregate([
+  {
+    $lookup: {
+      from: "productlines",
+      localField: "productLine",
+      foreignField: "productLine",
+      as: "productLineDetail"
+    }
+  },
+  { $unwind: "$productLineDetail" }
+])
+
+db.createCollection("CityWithCountry",
+{
+  "viewOn": "city",
+  "pipeline":[
+    {
+      "$lookup": {
+        "from": "country",
+        "localField": "CountryCode",
+        "foreignField": "Code",
+        "as": "countryDetail"
+      }
+    },
+    {
+      "$unwind": "$countryDetail"
+    }
+  ]
+})
+{
+      "$project": {
+        "_id": 0,
+        "CityName": "$Name",
+        "CityCountryCode": "$CountryCode",
+        "Population": "$Population",
+        "CountryName": "$countryDetail.Name",
+        "CountryPopulation": "$countryDetail.Population"
+      }
+    }
